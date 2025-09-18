@@ -77,13 +77,14 @@
       </p>
       <p class="links">
         <a class="btn" href="https://arxiv.org/abs/2509.12838" target="_blank" aria-label="Open arXiv paper">📄 Paper (arXiv)</a>
-        <a class="btn" href="papers/AROB_ISBC_2026_Murata.pdf" target="_blank" aria-label="Open submission PDF">📄 Submission PDF (under review)</a>
+        <a class="btn" href="papers/AROB_ISBC_2026_Murata.pdf" target="_blank" aria-label="Open submission PDF">
+          📄 Submission PDF <span class="badge">under review</span>
+        </a>
         <a class="btn" href="https://youtu.be/LMoWAp_kPhk" target="_blank" aria-label="Open demo video">▶️ Demo Video</a>
       </p>
       <img class="teaser"
            src="assets/img/teaser.png"
            alt="Overview figure"
-           width="1400" height="700"
            loading="lazy" decoding="async" />
       <p class="caption">Overview: natural-language instructions are decomposed into subtasks and allocated to robots using on-site spatial knowledge.</p>
     </div>
@@ -119,10 +120,8 @@
         Each robot learns on-site knowledge via a spatial concept model that links places (e.g., kitchen, bedroom) and object occurrence probabilities.
         The pipeline has four stages: (1) task decomposition from language, (2) knowledge-aware subtask allocation, (3) sequential action planning (navigation, object detection, pick, place), and (4) execution with feedback loops (FlexBE).
       </p>
-      <img src="assets/img/pipeline.png"
-           alt="Pipeline diagram"
-           width="1400" height="780"
-           loading="lazy" decoding="async" />
+      <img src="assets/img/pipeline.png" alt="Pipeline diagram" loading="lazy" decoding="async">
+      <figcaption>Four-stage pipeline: knowledge acquisition → decomposition &amp; allocation → action planning → execution with feedback.</figcaption>
       <p class="caption">Four-stage pipeline: knowledge acquisition → decomposition &amp; allocation → action planning → execution with feedback.</p>
       <ul>
         <li><strong>On-site knowledge</strong>: place vocabulary + object↔location probabilities</li>
@@ -225,5 +224,26 @@
       });
     })();
   </script>
+
+  <script>
+  // ScrollSpy for topnav
+  (function(){
+    const links = Array.from(document.querySelectorAll('.topnav a'));
+    const map = new Map(links.map(a => [a.getAttribute('href'), a]));
+    const opts = { rootMargin: '0px 0px -60% 0px', threshold: [0, 1.0] };
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const id = '#' + e.target.id;
+        const link = map.get(id);
+        if (!link) return;
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    }, opts);
+    document.querySelectorAll('main section[id]').forEach(sec => io.observe(sec));
+  })();
+</script>
 </body>
 </html>
