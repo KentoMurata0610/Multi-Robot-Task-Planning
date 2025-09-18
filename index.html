@@ -133,28 +133,29 @@
 
     <section id="experiments">
       <h2>Experiments</h2>
-      <img src="assets/img/1_floor_env.png"
-           alt="Evaluation environment first floor"
-           width="1400" height="600"
-           loading="lazy" decoding="async" />
-      <p class="caption">Evaluation environment – First floor (5 rooms, 12 objects).</p>
     
-      <img src="assets/img/2_floor_env.png"
-           alt="Evaluation environment second floor"
-           width="1400" height="600"
-           loading="lazy" decoding="async" />
-      <p class="caption">Evaluation environment – Second floor (5 rooms, 12 objects).</p>
+      <!-- First/Second floor side-by-side on desktop -->
+      <div class="media-grid two">
+        <figure>
+          <img src="assets/img/1_floor_env.png" alt="Evaluation environment – First floor" loading="lazy" decoding="async">
+          <figcaption>Evaluation environment – First floor (5 rooms, 12 objects).</figcaption>
+        </figure>
+    
+        <figure>
+          <img src="assets/img/2_floor_env.png" alt="Evaluation environment – Second floor" loading="lazy" decoding="async">
+          <figcaption>Evaluation environment – Second floor (5 rooms, 12 objects).</figcaption>
+        </figure>
+      </div>
     
       <p>
         We evaluate allocation accuracy across instruction types (random, hard-to-predict, common-sense, mixed).
         The proposed method reaches <strong>47/50</strong> correct allocations versus <em>random</em> <strong>28/50</strong> and <em>commonsense-only</em> <strong>26/50</strong>.
       </p>
     
-      <img src="assets/img/results.png"
-           alt="Results summary"
-           width="1400" height="800"
-           loading="lazy" decoding="async" />
-      <p class="caption">Allocation success counts across instruction types (random/hard/common-sense/mixed). See Table 3 in the paper.</p>
+      <figure>
+        <img src="assets/img/results.png" alt="Results summary" loading="lazy" decoding="async">
+        <figcaption>Allocation success counts across instruction types (random/hard/common-sense/mixed). See Table 3 in the paper.</figcaption>
+      </figure>
     </section>
     
     <section id="resources">
