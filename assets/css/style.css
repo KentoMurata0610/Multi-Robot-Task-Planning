@@ -54,3 +54,47 @@ pre.bibtex { background:#0b1220; color:#ddd; padding:16px; border-radius:12px; o
   border-radius: 12px;
   border: 1px solid #eee;
 }
+/* Typographic scale & section rhythm */
+section { margin: 56px 0 48px; }
+h1 { font-size: 2.25rem; letter-spacing: .1px; }
+h2 { font-size: 1.65rem; border-bottom: 1px solid #eee; padding-bottom: 8px; margin-top: 1.6em; }
+
+/* Figure pattern: image + short caption */
+figure { margin: 0 0 18px; }
+figure > img { display: block; max-width: 100%; height: auto; border-radius: 12px; border: 1px solid #eee; background: #fff; }
+figure > figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 6px; }
+
+/* Media grid for side-by-side figures (like first/second floor) */
+.media-grid { display: grid; gap: 16px; }
+@media (min-width: 900px) {
+  .media-grid.two { grid-template-columns: 1fr 1fr; align-items: start; }
+}
+
+/* Buttons: cleaner & consistent */
+.btn { transition: transform .05s ease, box-shadow .2s ease; box-shadow: 0 1px 0 rgba(0,0,0,.04); }
+.btn:hover { background:#f3f5f8; transform: translateY(-1px); }
+
+/* Small badge (for "under review"等) */
+.badge { display:inline-block; padding:2px 8px; border-radius:999px; font-size:12px; line-height:18px;
+         background:#eef4ff; color:#0b65c2; margin-left:8px; vertical-align:middle; }
+
+/* Topnav: active section highlight (used with JS below) */
+.topnav a { position: relative; }
+.topnav a.active { color: var(--brand); }
+.topnav a.active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -10px; height: 2px; background: var(--brand);
+}
+
+/* Images (global safety) */
+img, .teaser { display:block; max-width:100%; height:auto; }
+
+/* Optional: soften container for wider screens slightly */
+@media (min-width: 1200px) {
+  .container { max-width: 1040px; }
+}
+
+/* Dark mode tweaks consistent with additions */
+@media (prefers-color-scheme: dark) {
+  figure > img { border-color:#203040; background:#0a0f14; }
+  .badge { background:#18314a; color:#b9d7ff; }
+}
