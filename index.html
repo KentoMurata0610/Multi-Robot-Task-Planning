@@ -55,7 +55,19 @@
       .badge{background:#1d2433;border-color:#2e3b55}
     }
   </style>
-
+<script>
+  (function(){
+    const btn = document.getElementById('toggle-affil');
+    const list = document.getElementById('affiliations');
+    if(!btn || !list) return;
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      list.classList.toggle('hidden');
+      btn.textContent = expanded ? 'Show affiliations' : 'Hide affiliations';
+    });
+  })();
+</script>
   <!-- Structured data -->
   <script type="application/ld+json">
   {
