@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Multi-Robot Task Planning with Distributed On-Site Knowledge</title>
-  <meta name="description" content="Project page for multi-robot task planning using LLMs and spatial concepts." />
+  <title>Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models</title>
+  <meta name="description" content="Project page for multi-robot task planning that integrates LLM-based task decomposition and on-site spatial knowledge for knowledge-aware allocation." />
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- Canonical / Robots -->
-  <link rel="canonical" href="https://kentomurata0610.github.io/Multi-Robot-Task-Planning/">
+  <link rel="canonical" href="https://kentomurata0610.github.io/multi-robot-task-planning/">
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Multi-Robot Task Planning">
-  <meta property="og:title" content="Multi-Robot Task Planning with Distributed On-Site Knowledge">
-  <meta property="og:description" content="LLM-driven task decomposition and knowledge-aware allocation for cooperative object retrieval.">
-  <meta property="og:url" content="https://kentomurata0610.github.io/Multi-Robot-Task-Planning/">
-  <meta property="og:image" content="https://kentomurata0610.github.io/Multi-Robot-Task-Planning/assets/img/teaser.png">
+  <meta property="og:title" content="Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models">
+  <meta property="og:description" content="LLM-driven decomposition + on-site knowledge for cooperative multi-object retrieval by multiple robots.">
+  <meta property="og:url" content="https://kentomurata0610.github.io/multi-robot-task-planning/">
+  <meta property="og:image" content="https://kentomurata0610.github.io/multi-robot-task-planning/assets/img/teaser.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Multi-Robot Task Planning with Distributed On-Site Knowledge">
-  <meta name="twitter:description" content="LLM-driven task decomposition and knowledge-aware allocation.">
-  <meta name="twitter:image" content="https://kentomurata0610.github.io/Multi-Robot-Task-Planning/assets/img/teaser.png">
+  <meta name="twitter:title" content="Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models">
+  <meta name="twitter:description" content="LLM-driven decomposition + knowledge-aware allocation for cooperative object retrieval.">
+  <meta name="twitter:image" content="https://kentomurata0610.github.io/multi-robot-task-planning/assets/img/teaser.png">
 
   <!-- Optional: Favicon -->
   <!-- <link rel="icon" type="image/png" href="assets/img/favicon.png" /> -->
@@ -30,40 +30,49 @@
   <style>
     html{scroll-behavior:smooth}
     .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid #eee}
-    .topnav .navwrap{display:flex;gap:14px;padding:10px 0}
+    .topnav .navwrap{display:flex;gap:14px;padding:10px 0;flex-wrap:wrap}
     .topnav a{color:#111;font-weight:600;opacity:.85;text-decoration:none}
-    .topnav a:hover{opacity:1}
+    .topnav a:hover,.topnav a.active{opacity:1}
+    .hero .authors{color:#444;max-width:900px}
+    .affiliations{margin:.5rem 0 0 0;padding-left:1.2rem;color:#555}
+    .affiliations li{margin:.15rem 0}
+    .caption{color:#666}
+    figure{margin:1rem 0}
+    figcaption{color:#666;font-size:.95rem}
+    .badge{font-size:.8em;background:#eef;border:1px solid #ccd;border-radius:8px;padding:.1em .5em;margin-left:.25em}
+    .btn{display:inline-block;padding:.55em .9em;border:1px solid #ddd;border-radius:10px;text-decoration:none}
+    .btn:hover{background:#fafafa}
+    .media-grid.two{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:900px){.media-grid.two{grid-template-columns:1fr 1fr}}
     /* Responsive video container */
     .video-container{position:relative;padding-bottom:56.25%;height:0}
     .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;border:1px solid #eee}
-    /* Minor readability tweaks */
-    .hero .authors{color:#666;max-width:820px}
-    .caption{color:#666}
+
     /* Dark mode */
     @media (prefers-color-scheme: dark){
       .topnav{background:rgba(12,16,22,.75);border-bottom-color:#203040}
       .video-container iframe{border-color:#203040;background:#0a0f14}
+      .badge{background:#1d2433;border-color:#2e3b55}
     }
   </style>
 
-  <!-- Structured data (optional) -->
+  <!-- Structured data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"ScholarlyArticle",
     "name":"Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models",
     "author":[
-      {"@type":"Person","name":"Kento Murata"},
-      {"@type":"Person","name":"Shoichi Hasegawa"},
-      {"@type":"Person","name":"Tomochika Ishikawa"},
-      {"@type":"Person","name":"Yoshinobu Hagiwara"},
-      {"@type":"Person","name":"Akira Taniguchi"},
-      {"@type":"Person","name":"Lotfi El Hafi"},
-      {"@type":"Person","name":"Tadahiro Taniguchi"}
+      {"@type":"Person","name":"Kento Murata","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
+      {"@type":"Person","name":"Shoichi Hasegawa","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
+      {"@type":"Person","name":"Tomochika Ishikawa","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
+      {"@type":"Person","name":"Yoshinobu Hagiwara","affiliation":{"@type":"Organization","name":"Soka University / Ritsumeikan University"}},
+      {"@type":"Person","name":"Akira Taniguchi","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
+      {"@type":"Person","name":"Lotfi El Hafi","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
+      {"@type":"Person","name":"Tadahiro Taniguchi","affiliation":{"@type":"Organization","name":"Kyoto University / Ritsumeikan University"}}
     ],
-    "url":"https://kentomurata0610.github.io/Multi-Robot-Task-Planning/",
-    "sameAs":"https://arxiv.org/abs/2509.12838",
-    "image":"https://kentomurata0610.github.io/Multi-Robot-Task-Planning/assets/img/teaser.png",
+    "url":"https://kentomurata0610.github.io/multi-robot-task-planning/",
+    "image":"https://kentomurata0610.github.io/multi-robot-task-planning/assets/img/teaser.png",
     "datePublished":"2025-09-18"
   }
   </script>
@@ -71,22 +80,35 @@
 <body>
   <header class="hero">
     <div class="container">
-      <h1>Multi-Robot Task Planning for Multi-Object Retrieval with Distributed On-Site Knowledge via LLMs</h1>
+      <h1>Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models</h1>
+
+      <!-- Authors + affiliations -->
       <p class="authors">
-        Kento Murata, Shoichi Hasegawa, Tomochika Ishikawa, Yoshinobu Hagiwara, Akira Taniguchi, Lotfi El Hafi, Tadahiro Taniguchi
+        Kento Murata<sup>1†</sup>, Shoichi Hasegawa<sup>1</sup>, Tomochika Ishikawa<sup>1</sup>,
+        Yoshinobu Hagiwara<sup>3,4</sup>, Akira Taniguchi<sup>2</sup>,
+        Lotfi El Hafi<sup>4</sup>, Tadahiro Taniguchi<sup>4,5</sup>
       </p>
-      <p class="links">
+      <ul class="affiliations" aria-label="Author affiliations">
+        <li><sup>1</sup> Graduate School of Information Science and Engineering, Ritsumeikan University, Osaka, Japan</li>
+        <li><sup>2</sup> College of Information Science and Engineering, Ritsumeikan University, Osaka, Japan</li>
+        <li><sup>3</sup> Faculty of Science and Engineering, Soka University, Tokyo, Japan</li>
+        <li><sup>4</sup> Research Organization of Science and Technology, Ritsumeikan University, Shiga, Japan</li>
+        <li><sup>5</sup> Graduate School of Informatics, Kyoto University, Kyoto, Japan</li>
+      </ul>
+
+      <p class="links" style="margin-top:.6rem">
         <a class="btn" href="https://arxiv.org/abs/2509.12838" target="_blank" aria-label="Open arXiv paper">📄 Paper (arXiv)</a>
         <a class="btn" href="paper/AROB_ISBC_2026_Murata.pdf" target="_blank" aria-label="Open submission PDF">
-          📄 Submission PDF <span class="badge">under review</span>
+          📄 Submission PDF <span class="badge" aria-label="under review">under review</span>
         </a>
         <a class="btn" href="https://youtu.be/LMoWAp_kPhk" target="_blank" aria-label="Open demo video">▶️ Demo Video</a>
       </p>
+
       <img class="teaser"
            src="assets/img/teaser.png"
-           alt="Overview figure"
+           alt="Overview: language instructions are decomposed and allocated using on-site spatial knowledge."
            loading="lazy" decoding="async" />
-      <p class="caption">Overview: natural-language instructions are decomposed into subtasks and allocated to robots using on-site spatial knowledge.</p>
+      <p class="caption">Natural-language instructions are decomposed into subtasks and allocated to robots using on-site spatial knowledge.</p>
     </div>
   </header>
 
@@ -96,6 +118,7 @@
       <a href="#abstract">Abstract</a>
       <a href="#method">Method</a>
       <a href="#experiments">Experiments</a>
+      <a href="#supplement">Supplement</a>
       <a href="#resources">Resources</a>
       <a href="#demo">Demo</a>
       <a href="#bibtex">BibTeX</a>
@@ -110,7 +133,7 @@
         We study cooperative object search by multiple robots that receive natural-language instructions including multi-object or context-dependent goals (e.g., “find an apple and a banana”).
         Our framework integrates a large language model (LLM) with a spatial concept model that provides room names and room-wise object presence probabilities learned on each robot’s assigned area.
         With a tailored prompting strategy, the LLM infers required items from ambiguous commands, decomposes them into subtasks, and allocates them to robots that are most likely to succeed given their local knowledge.
-        In experiments, the method achieved <strong>47/50 successful allocations</strong>, outperforming random (28/50) and commonsense-only allocation (26/50), and was validated qualitatively on real mobile manipulators. <span class="cite">[See paper]</span>
+        In experiments, the method achieved <strong>47/50 successful allocations</strong>, outperforming random (28/50) and commonsense-only allocation (26/50), and was validated qualitatively on real mobile manipulators.
       </p>
     </section>
 
@@ -118,51 +141,58 @@
       <h2>Method</h2>
       <p>
         Each robot learns on-site knowledge via a spatial concept model that links places (e.g., kitchen, bedroom) and object occurrence probabilities.
-        The pipeline has four stages: (1) task decomposition from language, (2) knowledge-aware subtask allocation, (3) sequential action planning (navigation, object detection, pick, place), and (4) execution with feedback loops (FlexBE).
+        The pipeline has four stages: (1) task decomposition from language, (2) knowledge-aware subtask allocation,
+        (3) sequential action planning (<code>navigation → object_detection → pick → place</code>), and (4) execution with feedback loops (FlexBE).
       </p>
-      <img src="assets/img/pipeline.png" alt="Pipeline diagram" loading="lazy" decoding="async">
-      <figcaption>Four-stage pipeline: knowledge acquisition → decomposition &amp; allocation → action planning → execution with feedback.</figcaption>
-      <p class="caption">Four-stage pipeline: knowledge acquisition → decomposition &amp; allocation → action planning → execution with feedback.</p>
+      <figure>
+        <img src="assets/img/pipeline.png" alt="Four-stage pipeline: knowledge acquisition, decomposition & allocation, action planning, and feedback execution." loading="lazy" decoding="async">
+        <figcaption>Four-stage pipeline: knowledge acquisition → decomposition &amp; allocation → action planning → execution with feedback.</figcaption>
+      </figure>
       <ul>
-        <li><strong>On-site knowledge</strong>: place vocabulary + object↔location probabilities</li>
-        <li><strong>LLM prompts</strong>: few-shot design to infer items, decompose tasks, and justify allocation</li>
-        <li><strong>Execution</strong>: closed-loop behaviors and replanning on success/failure signals</li>
+        <li><strong>On-site knowledge</strong>: place vocabulary + object–room presence probabilities.</li>
+        <li><strong>LLM prompts</strong>: few-shot designs to infer items, decompose tasks, and justify allocation using local probabilities.</li>
+        <li><strong>Execution</strong>: closed-loop behaviors and replanning on success/failure signals.</li>
       </ul>
     </section>
 
     <section id="experiments">
       <h2>Experiments</h2>
-    
-      <!-- First/Second floor side-by-side on desktop -->
       <div class="media-grid two">
         <figure>
-          <img src="assets/img/1_floor_env.png" alt="Evaluation environment – First floor" loading="lazy" decoding="async">
+          <img src="assets/img/1_floor_env.png" alt="Evaluation environment – first floor" loading="lazy" decoding="async">
           <figcaption>Evaluation environment – First floor (5 rooms, 12 objects).</figcaption>
         </figure>
-    
         <figure>
-          <img src="assets/img/2_floor_env.png" alt="Evaluation environment – Second floor" loading="lazy" decoding="async">
+          <img src="assets/img/2_floor_env.png" alt="Evaluation environment – second floor" loading="lazy" decoding="async">
           <figcaption>Evaluation environment – Second floor (5 rooms, 12 objects).</figcaption>
         </figure>
       </div>
-    
       <p>
-        We evaluate allocation accuracy across instruction types (random, hard-to-predict, common-sense, mixed).
-        The proposed method reaches <strong>47/50</strong> correct allocations versus <em>random</em> <strong>28/50</strong> and <em>commonsense-only</em> <strong>26/50</strong>.
+        We evaluate allocation accuracy across instruction types (random, hard-to-predict, commonsense, mixed).
+        The proposed method reaches <strong>47/50</strong> correct allocations versus <em>random</em> <strong>28/50</strong>
+        and <em>commonsense-only</em> <strong>26/50</strong>.
       </p>
-    
       <figure>
-        <img src="assets/img/results.png" alt="Results summary" loading="lazy" decoding="async">
-        <figcaption>Allocation success counts across instruction types (random/hard/common-sense/mixed). See Table 3 in the paper.</figcaption>
+        <img src="assets/img/results.png" alt="Bar chart of allocation success counts across instruction types." loading="lazy" decoding="async">
+        <figcaption>Allocation success counts across instruction types (random/hard/commonsense/mixed).</figcaption>
       </figure>
     </section>
-    
+
+    <section id="supplement">
+      <h2>Supplement (Beyond the Paper)</h2>
+      <ul>
+        <li><strong>Prompt skeletons</strong>: how we embed room-wise probabilities, expose available skills, and request rationales during allocation.</li>
+        <li><strong>Failure case</strong>: bag grasp triggered a safety sensor → required recovery. Suggests grasp-pose constraints and collision-aware planning in future iterations.</li>
+        <li><strong>Limitations</strong>: no synchronous cooperation; no dynamic reallocation; homogeneous team assumption. We plan to explore heterogeneous teams and online reallocation.</li>
+      </ul>
+    </section>
+
     <section id="resources">
       <h2>Resources</h2>
       <ul>
-        <li>Paper (arXiv): <a href="https://arxiv.org/abs/2509.12838" target="_blank">arXiv:2509.12838</a></li>
-        <li>Submission PDF (AROB/ISBC 2026, under review): <a href="paper/AROB_ISBC_2026_Murata.pdf" target="_blank">PDF</a></li>
-        <li>Video: <a href="https://youtu.be/LMoWAp_kPhk" target="_blank">Demo</a></li>
+        <li>Paper (arXiv): <a href="https://arxiv.org/abs/2509.12838" target="_blank" rel="noopener">arXiv:2509.12838</a></li>
+        <li>Submission PDF (AROB/ISBC 2026, under review): <a href="paper/AROB_ISBC_2026_Murata.pdf" target="_blank" rel="noopener">PDF</a></li>
+        <li>Video: <a href="https://youtu.be/LMoWAp_kPhk" target="_blank" rel="noopener">Demo</a></li>
       </ul>
       <p class="caption"><strong>Code availability:</strong> not publicly released at this time.</p>
     </section>
@@ -189,7 +219,8 @@
   title   = {Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models},
   author  = {Murata, Kento and Hasegawa, Shoichi and Ishikawa, Tomochika and Hagiwara, Yoshinobu and Taniguchi, Akira and El Hafi, Lotfi and Taniguchi, Tadahiro},
   journal = {arXiv preprint arXiv:2509.12838},
-  year    = {2025}
+  year    = {2025},
+  note    = {Project page: https://kentomurata0610.github.io/multi-robot-task-planning/}
 }
 </pre>
       <p class="caption">Please cite the arXiv version until the conference review is complete.</p>
@@ -205,7 +236,8 @@
 
   <footer class="footer">
     <div class="container">
-      <p>© 2026 The Authors. This page summarizes findings from the paper; please cite the paper if you use any part of this work.</p>
+      <p>© <span id="year"></span> The Authors. This page summarizes findings from the paper; please cite the paper if you use any part of this work.</p>
+      <!-- 固定で2025にしたい場合は、上の年表示を「2025」に置き換えて下のスクリプトを削除してください。 -->
     </div>
   </footer>
 
@@ -225,8 +257,16 @@
     })();
   </script>
 
+  <!-- Year auto-update -->
   <script>
-  // ScrollSpy for topnav
+    (function(){
+      var y=document.getElementById('year');
+      if(y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <!-- ScrollSpy for topnav -->
+  <script>
   (function(){
     const links = Array.from(document.querySelectorAll('.topnav a'));
     const map = new Map(links.map(a => [a.getAttribute('href'), a]));
@@ -244,6 +284,6 @@
     }, opts);
     document.querySelectorAll('main section[id]').forEach(sec => io.observe(sec));
   })();
-</script>
+  </script>
 </body>
 </html>
