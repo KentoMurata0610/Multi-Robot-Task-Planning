@@ -23,28 +23,53 @@
   <meta name="twitter:description" content="LLM-driven decomposition + knowledge-aware allocation for cooperative object retrieval.">
   <meta name="twitter:image" content="https://kentomurata0610.github.io/multi-robot-task-planning/assets/img/teaser.png">
 
-  <!-- Optional: Favicon -->
-  <!-- <link rel="icon" type="image/png" href="assets/img/favicon.png" /> -->
-
-  <!-- Minimal add-on styles (safe to keep inline) -->
+  <!-- Minimal add-on styles -->
   <style>
     html{scroll-behavior:smooth}
-    .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid #eee}
-    .topnav .navwrap{display:flex;gap:14px;padding:10px 0;flex-wrap:wrap}
-    .topnav a{color:#111;font-weight:600;opacity:.85;text-decoration:none}
-    .topnav a:hover,.topnav a.active{opacity:1}
-    .hero .authors{color:#444;max-width:900px}
-    .affiliations{margin:.5rem 0 0 0;padding-left:1.2rem;color:#555}
-    .affiliations li{margin:.15rem 0}
-    .caption{color:#666}
-    figure{margin:1rem 0}
-    figcaption{color:#666;font-size:.95rem}
-    .badge{font-size:.8em;background:#eef;border:1px solid #ccd;border-radius:8px;padding:.1em .5em;margin-left:.25em}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    .center{ text-align:center }
+    .muted{ opacity:.75 }
+    .caption{ color:#666 }
     .btn{display:inline-block;padding:.55em .9em;border:1px solid #ddd;border-radius:10px;text-decoration:none}
     .btn:hover{background:#fafafa}
+    .btn.tiny{ padding:.35em .6em; font-size:.9rem }
+    .badge{font-size:.8em;background:#eef;border:1px solid #ccd;border-radius:8px;padding:.1em .5em;margin-left:.25em}
+    figure{margin:1rem 0}
+    figcaption{color:#666;font-size:.95rem}
     .media-grid.two{display:grid;grid-template-columns:1fr;gap:16px}
     @media(min-width:900px){.media-grid.two{grid-template-columns:1fr 1fr}}
-    /* Responsive video container */
+
+    /* Top nav */
+    .topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid #eee}
+    .topnav .navwrap{display:flex;gap:14px;padding:10px 0;flex-wrap:wrap;justify-content:center}
+    .topnav a{color:#111;font-weight:600;opacity:.85;text-decoration:none}
+    .topnav a:hover,.topnav a.active{opacity:1}
+
+    /* Hero (centered) */
+    .hero{padding:36px 0 20px}
+    .hero h1{ font-size:2.2rem; line-height:1.15; margin:0 0 .6rem; }
+    @media(min-width:900px){ .hero h1{ font-size:2.6rem; } }
+
+    /* Authors compact row */
+    .smart-authors{
+      display:inline-flex; flex-wrap:wrap; gap:.4rem .6rem; align-items:center;
+      color:#2b2b2b; font-size:1.05rem; justify-content:center;
+    }
+    .smart-authors a{ color:inherit; text-decoration:none; border-bottom:1px dashed rgba(0,0,0,.25) }
+    .smart-authors a:hover{ border-bottom-color:rgba(0,0,0,.55) }
+    .smart-authors .sep{ opacity:.45; user-select:none }
+    .smart-authors .nolink{ border-bottom:1px dotted transparent }
+    .corresponding{ margin-left:.15em; font-weight:700 }
+
+    /* Affiliations (collapsed by default) */
+    .affiliations{margin:.5rem auto 0 auto; padding-left:1.2rem; text-align:left; max-width:900px}
+    .hidden{ display:none }
+
+    /* Overview figure */
+    .overview-figure{ max-width:980px; margin: 10px auto; }
+    .overview-figure img{ width:100%; height:auto; border-radius:12px; border:1px solid #eee }
+
+    /* Video container */
     .video-container{position:relative;padding-bottom:56.25%;height:0}
     .video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border-radius:12px;border:1px solid #eee}
 
@@ -56,20 +81,20 @@
     }
   </style>
 
-  <!-- Structured data -->
+  <!-- Structured data (trimmed) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
     "@type":"ScholarlyArticle",
     "name":"Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models",
     "author":[
-      {"@type":"Person","name":"Kento Murata","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
-      {"@type":"Person","name":"Shoichi Hasegawa","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
-      {"@type":"Person","name":"Tomochika Ishikawa","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
-      {"@type":"Person","name":"Yoshinobu Hagiwara","affiliation":{"@type":"Organization","name":"Soka University / Ritsumeikan University"}},
-      {"@type":"Person","name":"Akira Taniguchi","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
-      {"@type":"Person","name":"Lotfi El Hafi","affiliation":{"@type":"Organization","name":"Ritsumeikan University"}},
-      {"@type":"Person","name":"Tadahiro Taniguchi","affiliation":{"@type":"Organization","name":"Kyoto University / Ritsumeikan University"}}
+      {"@type":"Person","name":"Kento Murata"},
+      {"@type":"Person","name":"Shoichi Hasegawa"},
+      {"@type":"Person","name":"Tomochika Ishikawa"},
+      {"@type":"Person","name":"Yoshinobu Hagiwara"},
+      {"@type":"Person","name":"Akira Taniguchi"},
+      {"@type":"Person","name":"Lotfi El Hafi"},
+      {"@type":"Person","name":"Tadahiro Taniguchi"}
     ],
     "url":"https://kentomurata0610.github.io/multi-robot-task-planning/",
     "image":"https://kentomurata0610.github.io/multi-robot-task-planning/assets/img/teaser.png",
@@ -79,46 +104,44 @@
 </head>
 <body>
   <header class="hero">
-    <div class="container">
+    <div class="container center">
       <h1>Multi-Robot Task Planning for Multi-Object Retrieval Tasks with Distributed On-Site Knowledge via Large Language Models</h1>
 
-      <!-- Authors + affiliations -->
-      <p class="authors smart-authors">
-        <span class="nolink">Kento Murata<span class="corresponding" title="Corresponding author">†</span><sup>1</sup></span>
-        <span class="sep">·</span>
-        <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener"
-           aria-label="Shoichi Hasegawa on Google Scholar">
-          Shoichi Hasegawa<sup>1</sup>
-        </a>
-        <span class="sep">·</span>
-        <span class="nolink">Tomochika Ishikawa<sup>1</sup></span>
-        <span class="sep">·</span>
-        <a href="https://scholar.google.co.jp/citations?user=Y4qjYvMAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener"
-           aria-label="Yoshinobu Hagiwara on Google Scholar">
-          Yoshinobu Hagiwara<sup>3,4</sup>
-        </a>
-        <span class="sep">·</span>
-        <a href="https://scholar.google.co.jp/citations?user=jtB7J0AAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener"
-           aria-label="Akira Taniguchi on Google Scholar">
-          Akira Taniguchi<sup>2</sup>
-        </a>
-        <span class="sep">·</span>
-        <a href="https://scholar.google.co.jp/citations?hl=ja&user=tsm7qaQAAAAJ" target="_blank" rel="noopener"
-           aria-label="Lotfi El Hafi on Google Scholar">
-          Lotfi El Hafi<sup>4</sup>
-        </a>
-        <span class="sep">·</span>
-        <a href="https://scholar.google.co.jp/citations?user=dPOCLQEAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener"
-           aria-label="Tadahiro Taniguchi on Google Scholar">
-          Tadahiro Taniguchi<sup>4,5</sup>
-        </a>
+      <!-- Authors (centered, with Scholar links where available) -->
+      <p class="authors">
+        <span class="smart-authors">
+          <span class="nolink">Kento Murata<span class="corresponding" title="Corresponding author">†</span><sup>1</sup></span>
+          <span class="sep">·</span>
+          <a href="https://scholar.google.co.jp/citations?user=KPxSCJUAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Shoichi Hasegawa on Google Scholar">
+            Shoichi Hasegawa<sup>1</sup>
+          </a>
+          <span class="sep">·</span>
+          <span class="nolink">Tomochika Ishikawa<sup>1</sup></span>
+          <span class="sep">·</span>
+          <a href="https://scholar.google.co.jp/citations?user=Y4qjYvMAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Yoshinobu Hagiwara on Google Scholar">
+            Yoshinobu Hagiwara<sup>3,4</sup>
+          </a>
+          <span class="sep">·</span>
+          <a href="https://scholar.google.co.jp/citations?user=jtB7J0AAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Akira Taniguchi on Google Scholar">
+            Akira Taniguchi<sup>2</sup>
+          </a>
+          <span class="sep">·</span>
+          <a href="https://scholar.google.co.jp/citations?hl=ja&user=tsm7qaQAAAAJ" target="_blank" rel="noopener" aria-label="Lotfi El Hafi on Google Scholar">
+            Lotfi El Hafi<sup>4</sup>
+          </a>
+          <span class="sep">·</span>
+          <a href="https://scholar.google.co.jp/citations?user=dPOCLQEAAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Tadahiro Taniguchi on Google Scholar">
+            Tadahiro Taniguchi<sup>4,5</sup>
+          </a>
+        </span>
       </p>
-      
+
+      <!-- Affiliations toggle -->
       <button class="btn tiny" id="toggle-affil" type="button" aria-expanded="false" aria-controls="affiliations">
         Show affiliations
       </button>
-      
-      <ol id="affiliations" class="affiliations compact hidden" aria-label="Author affiliations">
+
+      <ol id="affiliations" class="affiliations hidden" aria-label="Author affiliations">
         <li><sup>1</sup> Graduate School of Information Science and Engineering, Ritsumeikan University, Osaka, Japan</li>
         <li><sup>2</sup> College of Information Science and Engineering, Ritsumeikan University, Osaka, Japan</li>
         <li><sup>3</sup> Faculty of Science and Engineering, Soka University, Tokyo, Japan</li>
@@ -126,19 +149,14 @@
         <li><sup>5</sup> Graduate School of Informatics, Kyoto University, Kyoto, Japan</li>
       </ol>
 
-      <p class="links" style="margin-top:.6rem">
+      <!-- Links row -->
+      <p class="links" style="margin-top:.8rem">
         <a class="btn" href="https://arxiv.org/abs/2509.12838" target="_blank" aria-label="Open arXiv paper">📄 Paper (arXiv)</a>
         <a class="btn" href="paper/AROB_ISBC_2026_Murata.pdf" target="_blank" aria-label="Open submission PDF">
           📄 Submission PDF <span class="badge" aria-label="under review">under review</span>
         </a>
         <a class="btn" href="https://youtu.be/LMoWAp_kPhk" target="_blank" aria-label="Open demo video">▶️ Demo Video</a>
       </p>
-
-      <img class="teaser"
-           src="assets/img/teaser.png"
-           alt="Overview: language instructions are decomposed and allocated using on-site spatial knowledge."
-           loading="lazy" decoding="async" />
-      <p class="caption">Natural-language instructions are decomposed into subtasks and allocated to robots using on-site spatial knowledge.</p>
     </div>
   </header>
 
@@ -146,9 +164,9 @@
   <nav class="topnav" aria-label="Section navigation">
     <div class="container navwrap">
       <a href="#abstract">Abstract</a>
+      <a href="#overview">Overview</a>
       <a href="#method">Method</a>
       <a href="#experiments">Experiments</a>
-      <a href="#supplement">Supplement</a>
       <a href="#resources">Resources</a>
       <a href="#demo">Demo</a>
       <a href="#bibtex">BibTeX</a>
@@ -157,9 +175,10 @@
   </nav>
 
   <main class="container">
-    <section id="abstract">
+    <!-- 1) ABSTRACT FIRST (centered) -->
+    <section id="abstract" class="center">
       <h2>Abstract</h2>
-      <p>
+      <p class="lead" style="max-width:900px;margin:0 auto">
         We study cooperative object search by multiple robots that receive natural-language instructions including multi-object or context-dependent goals (e.g., “find an apple and a banana”).
         Our framework integrates a large language model (LLM) with a spatial concept model that provides room names and room-wise object presence probabilities learned on each robot’s assigned area.
         With a tailored prompting strategy, the LLM infers required items from ambiguous commands, decomposes them into subtasks, and allocates them to robots that are most likely to succeed given their local knowledge.
@@ -167,6 +186,21 @@
       </p>
     </section>
 
+    <!-- 2) OVERVIEW (figure + concise explanation), then go to Method -->
+    <section id="overview">
+      <h2 class="center">Overview</h2>
+      <figure class="overview-figure">
+        <img src="assets/img/teaser.png"
+             alt="Overview: language instructions are decomposed into subtasks and allocated to robots using on-site spatial knowledge."
+             loading="lazy" decoding="async">
+        <figcaption class="center">Natural-language instructions → decomposition → knowledge-aware allocation → execution.</figcaption>
+      </figure>
+      <p style="max-width:980px;margin:0 auto">
+        Each robot maintains on-site knowledge that links places (e.g., kitchen, bedroom) with object–room presence probabilities learned in its assigned area.
+        Given a user instruction, an LLM performs task decomposition and assigns subtasks to robots expected to have higher success probabilities under local knowledge.
+        Subtasks are executed by a skill sequence (<code>navigation → object_detection → pick → place</code>) with feedback and replanning.
+      </p>
+    </section>
     <section id="method">
       <h2>Method</h2>
       <p>
